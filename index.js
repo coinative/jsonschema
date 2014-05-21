@@ -94,7 +94,7 @@ function validate(instance, schema, tightenSchema) {
     };
   }
 
-  if (_.isUndefined(tightenSchema)) {
+  if (_.isUndefined(tightenSchema) || tightenSchema) {
     schema = tighten(schema);
   }
 
