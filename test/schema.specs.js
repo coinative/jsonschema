@@ -1,5 +1,8 @@
+/*jshint expr: true*/
+/*global describe, it, beforeEach */
+'use strict';
+require('chai').should();
 var schema = require('../index');
-var should = require('chai').should();
 
 describe('schema', function () {
   describe('validate', function () {
@@ -32,6 +35,7 @@ describe('schema', function () {
           prop2: [1, 2, 3]
         }
       }, testSchema).valid.should.be.true;
+
       schema.validate({
         prop1: 'abcdeabcdeabcdeabcde',
         prop2: 'a',

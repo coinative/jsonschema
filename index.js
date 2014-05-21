@@ -1,49 +1,8 @@
+'use strict';
+
 var _ = require('lodash');
 var Validator = require('jsonschema').Validator;
 var validator = new Validator();
-
-validator.addSchema(tighten({
-  type: 'string',
-  pattern: /^[0-9a-fA-F]{24}$/
-}), '/MongoDB#ObjectID');
-
-validator.addSchema(tighten({
-  type: 'string',
-  pattern: /^[0-9a-fA-F]{24}$/,
-  required: false
-}), '/MongoDB#ObjectID?');
-
-exports.validator = validator;
-exports.validate = validate;
-exports.tighten = tighten;
-
-/**
- * Validate an instance against a JSON Schema.
- */
-function validate(instance, schema, tightenSchema) {
-  if (!schema || !_.isObject(schema)) {
-    return {
-      valid: false,
-      errors: [
-        'Invalid schema.'
-      ]
-    };
-  }
-
-  if (_.isUndefined(tightenSchema)) {
-    schema = tighten(schema);
-  }
-
-  if (!instance || !_.isObject(instance)) {
-    return {
-      valid: false,
-      errors: [
-        'Invalid instance.'
-      ]
-    };
-  }
-  return validator.validate(instance, schema);
-}
 
 function isDefined(value) {
   return typeof value !== 'undefined';
@@ -95,7 +54,7 @@ function tighten(schema) {
     schema.required = true;
   }
   if (isDefined(schema.properties)) {
-    _(schema.properties).each(function (propertySchema, key) {
+    _(schema.properties).each(function (propertySchema) {
       tighten(propertySchema);
     });
     if (!isDefined(schema.additionalProperties)) {
@@ -116,3 +75,40 @@ function tighten(schema) {
   }
   return schema;
 }
+
+validator.addSchema(tighten({
+  type: 'string',
+  pattern: /^[0-9a-fA-F]{24}$/
+}), '/MongoDB#ObjectID');
+
+/**
+ * Validate an instance against a JSON Schema.
+ */
+function validate(instance, schema, tightenSchema) {
+  if (!schema || !_.isObject(schema)) {
+    return {
+      valid: false,
+      errors: [
+        'Invalid schema.'
+      ]
+    };
+  }
+
+  if (_.isUndefined(tightenSchema)) {
+    schema = tighten(schema);
+  }
+
+  if (!instance || !_.isObject(instance)) {
+    return {
+      valid: false,
+      errors: [
+        'Invalid instance.'
+      ]
+    };
+  }
+  return validator.validate(instance, schema);
+}
+
+exports.validator = validator;
+exports.validate = validate;
+exports.tighten = tighten;
