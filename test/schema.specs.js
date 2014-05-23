@@ -1,7 +1,6 @@
 /*jshint expr: true*/
 /*global describe, it, beforeEach */
 'use strict';
-require('chai').should();
 var schema = require('../index');
 
 describe('schema', function () {

@@ -4,14 +4,14 @@
   "description": "Implicit schema validation",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/mocha 'test/**/*.specs.js' --reporter spec"
+    "test": "./node_modules/.bin/mocha -r ./test/support/env -R dot ./test"
   },
   "author": "Coinative",
   "license": "MIT",
   "readmeFilename": "README.md",
   "devDependencies": {
     "chai": "^1.9.1",
-    "mocha": "^1.19.0"
+    "mocha": "^1.18.2"
   },
   "dependencies": {
     "jsonschema": "^0.4.0",
