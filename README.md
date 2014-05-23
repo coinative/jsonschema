@@ -1,6 +1,6 @@
 # @coinative/jsonschema
 
-[![Coverage Status](https://img.shields.io/coveralls/coinative/jsonschema.svg)](https://coveralls.io/r/coinative/jsonschema?branch=master)
+[![Build Status](https://travis-ci.org/coinative/jsonschema.svg?branch=master)](https://travis-ci.org/coinative/jsonschema) [![Coverage Status](https://img.shields.io/coveralls/coinative/jsonschema.svg)](https://coveralls.io/r/coinative/jsonschema?branch=master)
 
 Implicit schema support (tightened) for [jsonschema](https://github.com/tdegrunt/jsonschema)
 
