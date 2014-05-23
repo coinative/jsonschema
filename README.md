@@ -1,5 +1,7 @@
 # @coinative/jsonschema
 
+[![Coverage Status](https://img.shields.io/coveralls/coinative/jsonschema.svg)](https://coveralls.io/r/coinative/jsonschema?branch=master)
+
 Implicit schema support (tightened) for [jsonschema](https://github.com/tdegrunt/jsonschema)
 
 ## Install
